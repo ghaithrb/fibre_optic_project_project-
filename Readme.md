@@ -1,296 +1,160 @@
-\# Fibre Optic Network Project
+# 🚀 Fibre Optic Network Project
 
+**Author:** Ghaith Riabi  
+**GitHub:** https://github.com/ghaithrb  
+**Date:** April 2026
 
+---
 
-\*\*Author:\*\* :contentReference\[oaicite:0]{index=0}  
+## 📄 Project Overview
 
-\*\*GitHub:\*\* \[ghaithrb](https://github.com/ghaithrb)  
+This project demonstrates a complete **fibre optic network setup** including:
 
-\*\*Date:\*\* April 2026
+- VLAN segmentation for clients and monitoring  
+- Cisco routers and switches configuration  
+- OPNsense firewall deployment  
+- Ubuntu server running Zabbix for monitoring  
+- Windows clients with Zabbix agents  
+- Secure monitoring using SNMPv3  
+- Alerting via Email and Telegram  
+- Full GNS3 topology for simulation and testing  
 
+🎯 **Goal:** Provide a professional and reusable network architecture suitable for both lab environments and real-world deployment.
 
+---
 
-\---
+## 🖼 Topology & Architecture
 
+### Network Topology
 
+![Network Topology](img/architecture.png)
 
-\## 📄 Project Overview
+### Components
 
+- **Routers:** R1, R2  
+- **Switches:** Core and access switches  
+- **Firewall:** OPNsense (NAT & security)  
+- **Server:** Ubuntu (Zabbix monitoring)  
+- **Clients:** Windows and Linux machines  
 
+---
 
-This project demonstrates a complete \*\*fibre optic network setup\*\* with:
+## 📂 Project Structure
 
-
-
-\- Multiple VLAN segmentation for clients and monitoring
-
-\- Cisco routers and switches configuration
-
-\- OPNsense firewall deployment
-
-\- Ubuntu Zabbix server for network monitoring
-
-\- Windows clients with Zabbix agents
-
-\- SNMPv3-based secure monitoring
-
-\- Alerting via Email and Telegram
-
-\- Full GNS3 topology for simulation and testing
-
-
-
-The aim is to provide a professional, reusable network architecture suitable for both lab and real-world environments.
-
-
-
-\---
-
-
-
-\## 🖼 Topology \& Architecture
-
-
-
-\### Network Topology
-
-
-
-!\[Network Topology](img/architecture.png)
-
-
-
-The topology includes:
-
-
-
-\- \*\*Routers:\*\* R1, R2
-
-\- \*\*Switches:\*\* Core and access switches
-
-\- \*\*Firewall:\*\* OPNsense for NAT and security
-
-\- \*\*Servers:\*\* Ubuntu server running Zabbix
-
-\- \*\*Clients:\*\* Windows and Linux endpoints
-
-
-
-\---
-
-
-
-\## 📂 Project Structure
-
-fibre\_optic\_project\_github/
-
+```
+fibre_optic_project_github/
 │
+├─ clients/              # Windows/Linux client machines
+├─ configs/              # Configuration files
+│  ├─ opnsense_config.txt
+│  ├─ router_config.txt
+│  ├─ switch_config.txt
+│  ├─ snmp_router.txt
+│  ├─ snmp_switch.txt
+│  ├─ ubuntu_network.yaml
+│  ├─ zabbix_install.sh
+│  └─ windows_steps.txt
+│
+├─ docs/                 # Documentation
+│  └─ rapport.docx
+│
+├─ firewall/             # Firewall backups
+├─ gns3/                 # GNS3 project files
+├─ img/                  # Images
+│  └─ architecture.png
+│
+├─ linux/                # Linux scripts/packages
+├─ routers/              # Router backups
+├─ scripts/              # Automation scripts
+├─ switch/               # Switch backups
+├─ switche IOU 1/        # IOU switch configs
+├─ topology/             # Additional topology references
+```
+
+---
+
+## ⚙️ Device Configurations
+
+### 🔥 OPNsense Firewall
+- NAT & routing enabled  
+- LAN: `10.0.0.1/24`  
+- DHCP: `10.0.0.100 – 10.0.0.200`  
+- DNS: `8.8.8.8`  
+
+### 🌐 Cisco Routers
+- VLAN 10: `192.168.10.0/24`  
+- VLAN 20: `192.168.20.0/24`  
+- NAT & DHCP configured  
+- Trunk connections to switches  
+
+### 🔀 Switches
+- VLAN segmentation (clients, monitoring, management)  
+- Trunk links between devices  
+- Access ports per VLAN  
+
+### 🖥 Zabbix Server
+- Ubuntu configured via **netplan**  
+- Zabbix server & agent installed  
+- MySQL database initialized  
+- Monitoring deployed across clients  
+
+### 📡 SNMP Monitoring
+- SNMPv3 enabled on routers & switches  
+- Secure authentication (SHA + AES-128)  
+- Integrated with Zabbix  
+
+### 💻 Windows Clients
+- Zabbix agent installed  
+- Firewall configured  
+- Hostname properly set  
+
+---
+
+## 🛠 Installation & Setup
+
+1. Restore configurations using provided `.txt` / `.cfg` files  
+2. Deploy OPNsense (restore backup if needed)  
+3. Import GNS3 topology (`fibre projet.gns3`)  
+4. Configure Ubuntu using:
+   - `zabbix_install.sh`
+   - `ubuntu_network.yaml`  
+5. Install Zabbix agents on all clients  
+6. Verify SNMP in Zabbix frontend  
+7. Configure alerts (Email + Telegram)  
+
+---
+
+## 📈 Monitoring & Alerts
+
+- **Zabbix Web Interface:**  
+  `http://<Zabbix-server-ip>/zabbix`
+
+- **Alerts:** Email (SMTP) & Telegram  
+
+### Metrics Monitored:
+- Device availability  
+- Interface bandwidth  
+- Packet loss  
+- CPU & memory usage  
+
+---
+
+## 📌 Notes
+
+- Fully modular and reusable architecture  
+- Works on real hardware and GNS3  
+- Easily scalable (more VLANs, servers, etc.)  
+
+---
 
-├─ clients/ # Windows/Linux client machines
+## 💾 Screenshots
 
-├─ configs/ # Configuration files for all devices
+- See `img/architecture.png` for full network diagram  
 
-│ ├─ opnsense\_config.txt
+---
 
-│ ├─ router\_config.txt
+## 🔗 Author & Repository
 
-│ ├─ switch\_config.txt
-
-│ ├─ snmp\_router.txt
-
-│ ├─ snmp\_switch.txt
-
-│ ├─ ubuntu\_network.yaml
-
-│ ├─ zabbix\_install.sh
-
-│ └─ windows\_steps.txt
-
-├─ docs/ # Documentation and reports
-
-│ └─ rapport.docx
-
-├─ firewall/ # Firewall backup files
-
-├─ gns3/ # GNS3 project files
-
-├─ img/ # Architecture images
-
-│ └─ architecture.png
-
-├─ linux/ # Linux scripts \& packages
-
-├─ routers/ # Router config backups
-
-├─ scripts/ # Automation scripts
-
-├─ switch/ # Switch backups
-
-├─ switche IOU 1/ # IOU switch configs
-
-├─ topology/ # Additional topology references
-
-
-
-\---
-
-
-
-\## ⚙️ Device Configurations
-
-
-
-\### OPNsense Firewall
-
-\- NAT \& routing enabled
-
-\- LAN: 10.0.0.1/24
-
-\- DHCP range: 10.0.0.100 – 10.0.0.200
-
-\- DNS: 8.8.8.8
-
-
-
-\### Cisco Routers
-
-\- VLAN 10: 192.168.10.0/24  
-
-\- VLAN 20: 192.168.20.0/24  
-
-\- NAT \& DHCP configured  
-
-\- Interfaces connected to trunk ports on switches  
-
-
-
-\### Switches
-
-\- VLANs configured for clients, monitoring, and management
-
-\- Trunking between switches and routers
-
-\- Access ports assigned per VLAN
-
-
-
-\### Zabbix Server
-
-\- Ubuntu server network configured via netplan
-
-\- Zabbix server \& agent installed
-
-\- MySQL database initialized
-
-\- Monitoring agents deployed on Windows/Linux clients
-
-
-
-\### SNMP Monitoring
-
-\- SNMPv3 configured on routers and switches
-
-\- Secure authentication (SHA + AES 128)
-
-\- Integration with Zabbix for network monitoring
-
-
-
-\### Windows Clients
-
-\- Zabbix agent installed
-
-\- Firewall configured to allow monitoring ports
-
-\- Hostname configured for server recognition
-
-
-
-\---
-
-
-
-\## 🛠 Installation \& Setup
-
-
-
-1\. Restore all device configurations using provided `.txt` or `.cfg` files.
-
-2\. Deploy OPNsense firewall with backup XML if needed.
-
-3\. Import GNS3 topology (`fibre projet.gns3`) to simulate network.
-
-4\. Configure Ubuntu server using `zabbix\_install.sh` and `ubuntu\_network.yaml`.
-
-5\. Install Zabbix agents on all client machines.
-
-6\. Verify SNMP connections in Zabbix frontend.
-
-7\. Configure alerts in Zabbix for email and Telegram notifications.
-
-
-
-\---
-
-
-
-\## 📈 Monitoring \& Alerts
-
-
-
-\- \*\*Zabbix Frontend:\*\* Access via `http://<Zabbix-server-ip>/zabbix`
-
-\- \*\*Alerting:\*\* Configured for both Email (SMTP) and Telegram
-
-\- \*\*Metrics Monitored:\*\*
-
-&#x20; - Device availability
-
-&#x20; - Interface bandwidth
-
-&#x20; - Packet loss
-
-&#x20; - CPU and memory usage
-
-
-
-\---
-
-
-
-\## 📌 Notes
-
-
-
-\- This project is fully modular and reusable.
-
-\- Scripts and configs can be applied on real devices or GNS3 simulation.
-
-\- Architecture can scale for more VLANs or additional servers.
-
-
-
-\---
-
-
-
-\## 💾 Screenshots
-
-
-
-\- See `img/architecture.png` for full network diagram.
-
-
-
-\---
-
-
-
-\## 🔗 Author \& Repository
-
-
-
-\*\*:contentReference\[oaicite:1]{index=1}\*\*  
-
-GitHub: \[https://github.com/ghaithrb](https://github.com/ghaithrb)
+👤 **Ghaith Riabi**  
+🔗 https://github.com/ghaithrb
 
