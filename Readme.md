@@ -31,7 +31,7 @@ This project demonstrates a complete **fibre optic network setup** including:
 
 ### Components
 
-- **Routers:** R1, R2  
+- **Routers:** router
 - **Switches:** Core and access switches  
 - **Firewall:** OPNsense (NAT & security)  
 - **Server:** Ubuntu (Zabbix monitoring)  
