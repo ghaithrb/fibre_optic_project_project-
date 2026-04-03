@@ -1,0 +1,33 @@
+enable
+conf t
+
+hostname SW1
+
+# VLANs
+vlan 10
+ name CLIENTS
+
+vlan 20
+ name MONITORING
+
+vlan 99
+ name MANAGEMENT
+
+# Trunk
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+# Server (Zabbix)
+interface GigabitEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+
+# Clients
+interface GigabitEthernet0/3
+ switchport mode access
+ switchport access vlan 10
+
+interface GigabitEthernet0/4
+ switchport mode access
+ switchport access vlan 10

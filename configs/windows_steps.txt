@@ -1,0 +1,7 @@
+1. Install Zabbix Agent
+2. Configure:
+   Server=192.168.20.10
+   ServerActive=192.168.20.10
+   Hostname=Windows10
+
+3. Open port 10050 in firewall

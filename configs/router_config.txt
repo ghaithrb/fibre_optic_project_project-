@@ -1,0 +1,48 @@
+enable
+conf t
+
+# Interface WAN
+interface GigabitEthernet0/0
+ ip address dhcp
+ no shutdown
+
+# Trunk to switch
+interface GigabitEthernet0/1
+ no shutdown
+
+# VLAN 10
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+
+# VLAN 20
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+
+# NAT
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+
+ip nat inside source list 1 interface GigabitEthernet0/0 overload
+
+interface GigabitEthernet0/0
+ ip nat outside
+
+interface GigabitEthernet0/1
+ ip nat inside
+
+# Default route
+ip route 0.0.0.0 0.0.0.0 dhcp
+
+# DHCP VLAN 10
+ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+
+# DHCP VLAN 20
+ip dhcp pool VLAN20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 8.8.8.8

@@ -1,0 +1,2 @@
+snmp-server group ZABBIX v3 priv
+snmp-server user zabbix ZABBIX v3 auth sha authpass priv aes 128 privpass

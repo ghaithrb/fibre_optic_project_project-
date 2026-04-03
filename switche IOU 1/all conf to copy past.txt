@@ -1,0 +1,182 @@
+enable
+configure terminal
+
+! Hostname and system settings
+hostname FTTH-Switch
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+no aaa new-model
+no ip icmp rate-limit unreachable
+no ip cef
+no ip domain-lookup
+no ipv6 cef
+ipv6 multicast rpf use-bgp
+
+! Logging
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL
+logging buffered 50000
+logging console discriminator EXCESS
+
+! Spanning-tree
+spanning-tree mode pvst
+spanning-tree extend system-id
+
+! VLAN allocation
+vlan internal allocation policy ascending
+
+! TCP settings
+ip tcp synwait-time 5
+
+! Interfaces configuration
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
+ duplex auto
+
+interface Ethernet0/1
+ switchport access vlan 20
+ switchport mode access
+ duplex auto
+
+interface Ethernet0/2
+ switchport access vlan 10
+ switchport mode access
+ duplex auto
+
+interface Ethernet0/3
+ switchport access vlan 10
+ switchport mode access
+ duplex auto
+
+interface Ethernet1/0
+ duplex auto
+interface Ethernet1/1
+ duplex auto
+interface Ethernet1/2
+ duplex auto
+interface Ethernet1/3
+ duplex auto
+
+interface Ethernet2/0
+ duplex auto
+interface Ethernet2/1
+ duplex auto
+interface Ethernet2/2
+ duplex auto
+interface Ethernet2/3
+ duplex auto
+
+interface Ethernet3/0
+ duplex auto
+interface Ethernet3/1
+ duplex auto
+interface Ethernet3/2
+ duplex auto
+interface Ethernet3/3
+ duplex auto
+
+! VLAN interfaces
+interface Vlan1
+ no ip address
+ shutdown
+
+interface Vlan20
+ ip address 192.168.20.2 255.255.255.0
+
+! Default gateway
+ip default-gateway 192.168.20.1
+
+! Disable HTTP server
+no ip http server
+
+! SNMP Configuration
+snmp-server group ZABBIX v3 priv notify *tv.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF.FFFFFFFF7F
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps flowmon
+snmp-server enable traps tty
+snmp-server enable traps eigrp
+snmp-server enable traps casa
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps pw vc
+snmp-server enable traps l2tun session
+snmp-server enable traps l2tun pseudowire status
+snmp-server enable traps ether-oam
+snmp-server enable traps mpls rfc ldp
+snmp-server enable traps mpls ldp
+snmp-server enable traps mpls rfc traffic-eng
+snmp-server enable traps mpls traffic-eng
+snmp-server enable traps mpls fast-reroute protected
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps dot1x auth-fail-vlan guest-vlan no-auth-fail-vlan no-guest-vlan
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps isakmp policy add
+snmp-server enable traps isakmp policy delete
+snmp-server enable traps isakmp tunnel start
+snmp-server enable traps isakmp tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps bfd
+snmp-server enable traps bgp
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps dlsw
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps isis
+snmp-server enable traps msdp
+snmp-server enable traps mvpn
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps rsvp
+snmp-server enable traps ipsla
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps syslog
+snmp-server enable traps ethernet cfm alarm
+snmp-server enable traps mpls vpn
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server host 192.168.20.11 version 3 priv zabbixuser
+
+! Control plane
+control-plane
+
+! Console and VTY lines
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+
+line vty 0 4
+ login
+
+end
+write memory

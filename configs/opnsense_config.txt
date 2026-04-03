@@ -1,0 +1,16 @@
+# Interfaces
+WAN -> DHCP (Internet)
+LAN -> 10.0.0.1/24
+
+# Enable NAT
+Firewall > NAT > Outbound: Automatic
+
+# Firewall Rules
+Allow LAN -> any
+
+# DHCP (if used)
+Range: 10.0.0.100 - 10.0.0.200
+
+# DNS
+System > Settings > General:
+DNS: 8.8.8.8

@@ -1,0 +1,38 @@
+Jan 22 18:04:22.579 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 22 18:04:22.579 HYPERVISOR: Started on IP = localhost, TCP port = 63277.
+Jan 22 18:04:23.059 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 22 18:04:23.060 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\GHAITH\GNS3\projects\fibre projet\project-files\dynamips 
+Jan 22 18:04:23.099 GENERAL: working_dir=C:\Users\GHAITH\GNS3\projects\fibre projet\project-files\dynamips
+Jan 22 18:04:23.099 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\GHAITH\GNS3\projects\fibre projet\project-files\dynamips\f4394762-070f-4077-bb1e-0fb33fde3688 
+Jan 22 18:04:23.099 GENERAL: working_dir=C:\Users\GHAITH\GNS3\projects\fibre projet\project-files\dynamips\f4394762-070f-4077-bb1e-0fb33fde3688
+Jan 22 18:04:23.101 HYPERVISOR: exec_cmd: vm create R1 1 c7200 
+Jan 22 18:04:23.102 VM: VM R1 created.
+Jan 22 18:04:23.102 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5000 
+Jan 22 18:04:23.103 HYPERVISOR: exec_cmd: c7200 get_mac_addr R1 
+Jan 22 18:04:23.103 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.103 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-FE 
+Jan 22 18:04:23.104 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/GHAITH/GNS3/images/IOS/c7200-adventerprisek9-mz.152-4.S6.image 
+Jan 22 18:04:23.104 HYPERVISOR: exec_cmd: vm set_exec_area R1 64 
+Jan 22 18:04:23.104 HYPERVISOR: exec_cmd: vm set_ram R1 512 
+Jan 22 18:04:23.105 HYPERVISOR: exec_cmd: vm set_nvram R1 512 
+Jan 22 18:04:23.105 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+Jan 22 18:04:23.106 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.106 HYPERVISOR: exec_cmd: vm slot_add_binding R1 1 0 PA-POS-OC3 
+Jan 22 18:04:23.106 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.106 HYPERVISOR: exec_cmd: vm slot_add_binding R1 2 0 PA-A1 
+Jan 22 18:04:23.106 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm slot_add_binding R1 3 0 PA-FE-TX 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm slot_add_binding R1 4 0 PA-GE 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm slot_add_binding R1 5 0 PA-POS-OC3 
+Jan 22 18:04:23.107 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:23.108 HYPERVISOR: exec_cmd: vm slot_add_binding R1 6 0 PA-FE-TX 
+Jan 22 18:04:23.154 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/GHAITH/GNS3/images/IOS/c7200-adventerprisek9-mz.152-4.S6.image 
+Jan 22 18:04:28.837 HYPERVISOR: exec_cmd: vm get_status R1 
+Jan 22 18:04:28.838 HYPERVISOR: exec_cmd: vm extract_config R1 
+Jan 22 18:04:28.839 HYPERVISOR: exec_cmd: vm delete R1 
+Jan 22 18:04:28.839 VM: VM R1 destroyed.
+Jan 22 18:04:28.840 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 22 18:04:29.068 HYPERVISOR: Stopped.
+Jan 22 18:04:29.068 GENERAL: reset done.
